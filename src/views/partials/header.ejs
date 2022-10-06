@@ -1,0 +1,86 @@
+<header>
+    <!--Icono-->
+    <div class="logo">
+        <a href="/"><img src="/images/logo2.png" alt=""></a>
+    </div>
+    <!--Nav-Bar-->
+    <div class="nav-bar">
+        <nav>
+            <ul>
+                <li><a href="/productos">Nuestros Cafés</a></li>
+                <li><a href="/productos/otros">Nuestras Delicias</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="icons">
+
+        <!-- iconos que quedan siempre -->
+        
+        <!-- lupa -->
+        <div class="icon-magnifying-glass">
+            <form action="/productos/buscar" method="post">
+                
+               <input type="text" id='' name="search" placeholder="Buscar..."  >
+               <button type="submit" class="lupa">
+                    <i class="fa-solid fa-magnifying-glass" title="Busca productos!"></i>
+               </button>
+               
+           </form>
+        </div>
+
+        <!-- hamburguesa -->
+        <div class="icon-bars">
+            <i id="menuBar" class="fa-solid fa-bars"></i>
+        </div>
+
+        <!-- Si es logged entonces  -->
+            <% if (locals.isLogged) { %>               
+            
+            <!-- if user is an admin the show the register -->
+            <% if (locals.userLogged.rols_id === 2) { %>
+            <div class="icon-register">
+                <li><a href="/usuarios/registro" title="Registrate!"><i class="far fa-id-card"></i></a></li>
+            </div>
+            <% } %>
+
+            <div class="icon-cart">
+                <a href="/productos/carrito" title="Mi Carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+
+            <div class="icon-register">
+                <a href="/usuarios/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+
+            <div class="icon-register">
+            <a href="/usuarios/perfil">   <img src="/images/users/<%=locals.userLogged.image %>" width="30" style="border-radius: 100%;"></a>
+            </div>
+
+            <div class="icon-register">
+                Hola, <%= locals.userLogged.first_name %>
+            </div>
+        
+        <!-- Si es logged entonces  -->
+        <% } else { %>
+
+            <div class="icon-user">
+                <a href="/usuarios/login" title="Login"><i class="fa-solid fa-user"></i></a>
+            </div>
+
+            <div class="icon-register">
+                <li><a href="/usuarios/registro" title="Registrate!"><i class="far fa-id-card"></i></a></li>
+            </div>
+
+            <!-- Contactenos -->
+            <div class="icon-envelope">
+                <a href="/contactenos" title="Contactanos!"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+
+        <% } %>
+    </div>
+
+</header>
+
+    <%- include('../partials/navMobile') %>
+
+    <script src="/js/menu.js"></script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Aqui va el head -->
+<%- include('../partials/head') %>
+
+<body>
+    
+    <!-- Aqui va el header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Aqui va el main -->
+
+    <main>
+        
+        <div class="main-title-ctn">
+            <p>Contactenos</p>
+        </div> 
+
+        <div class="main-form-ctn">
+            <form action="/" method="" class="form-ctn">
+
+                <label for="consulta" class="title-ctn" >Dejanos tu consulta</label>
+                <textarea name="consulta" id="consulta" class='content-ctn' placeholder="Quisiera saber...." required rows="10" cols="50"></textarea>
+                
+                <label for="email" class="title-ctn" >Email</label>
+                <input type="email" name="email" id="email" class='content-ctn' placeholder="tumail@mail.com" required>
+                <div class="btn-ctn">
+                    <div class="submit-compra-mc">
+                        <button class="submit-lgn-mc">Enviar</button>
+                    </div>  
+                </div>
+
+            </form>
+        </div>
+        
+
+    </main>
+
+    <!-- Aca va el footer -->
+    <%- include('../partials/footer') %>
+    
+</body>
+
+</html>

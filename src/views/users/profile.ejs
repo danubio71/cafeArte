@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head') %>
+<body>
+	<%- include('../partials/header') %>
+    
+	<!-- Container -->
+    <article class="user-profile">
+        <h2>Hi <%= user.first_name + " " + user.last_name %>  </h2>
+				<img src="/images/users/<%= user.image %>" alt="Perfil">
+				<br>
+				<br>
+				<div class="alert alert-success">
+                   <p>
+                    Tu correo es: <%= user.email %>
+                   </p>  
+                </div>
+                
+                <div>
+                    <form action="/usuarios/edit/<%= user.id %>" method="get" class="create-user botonesEditarProducto">
+                        <button type="submit" class="submit-lgn-mc">Editar Usuario </button>
+                    </form>
+                </div>
+                <div>
+                    <form action="/usuarios/detalle/<%= user.id %>" method="get" class="create-user botonesEditarProducto">
+                        <button type="submit" class="submit-lgn-mc">Detalle Usuario </button>
+                    </form>
+                </div>
+        </a>
+    </article>
+
+	<!-- //Container -->
+	
+    <%- include('../partials/footer') %>
+</body>
+</html>

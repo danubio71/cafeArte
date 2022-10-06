@@ -1,0 +1,37 @@
+<div class="mobile-display">
+    <% if (locals.isLogged) { %>
+
+        <div class="icon-register-mobile">
+            <a href="/usuarios/perfil">Hola, <%= locals.userLogged.first_name %> <img src="/images/users/<%=locals.userLogged.image %>" width="25" style="border-radius: 100%;"></a>
+        </div>
+        
+    <% }%>
+    <div class="icon-register-mobile">
+        <a href="/productos">Nuestros Cafés</a>
+    </div>
+    
+    <div class="icon-register-mobile">
+        <a href="/productos/otros">Nuestras Delicias</a>
+    </div>
+
+    <% if (locals.isLogged) { %>
+        <div class="icon-register-mobile">
+            <a href="/usuarios/logout">Salir</a>
+        </div>
+        
+    <% } else { %>
+        <div class="icon-register-mobile">
+            <a href="/usuarios/login" title="Login">Login</a>
+        </div>
+
+        <div class="icon-register-mobile">
+            <a href="/usuarios/registro" title="Registrate!">Registrate</a>
+        </div>
+
+        <!-- Contactenos -->
+        <div class="icon-register-mobile">
+            <a href="/contactenos" title="Contactanos!">Contactanos</i></a>
+        </div>
+
+    <% } %>
+</div>

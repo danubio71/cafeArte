@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Aqui va el head -->
+    <%- include('../partials/head') %>
+
+<body>
+    
+    <!-- Aqui va el header -->
+    <%- include('../partials/header') %>
+
+    
+
+    <!-- Aqui va el main -->
+    <main>
+        <div class="login">
+            <div class="form-principal">
+                <form action="/usuarios/detalle" method="get" class="create-user" >
+                    <h2 class="registro">Detalle de Usuario</h2>
+                  
+                    <div class="control-form">
+                        <div style="text-align: center;">
+                        <img src="/images/users/<%= user.image %>" alt="Perfil" class ="foto-perfil" >
+                    </div>
+                        <label for="first_name">Nombre</label> 
+                        <input 
+                            type="text" 
+                            name="first_name" 
+                            class="control <%= locals.errors && errors.first_name ? 'is-invalid' : null %>"
+                            placeholder="Nombre"
+
+                            value="<%= user.first_name  %>" readonly> 
+                        <% if (locals.errors && errors.first_name) { %>
+                            <div class="text-danger">
+                                <%= errors.first_name.msg %> 
+                            </div>                         
+                        <% } %>
+                    </div>
+                    <div class="control-form">
+                        <label for="last_name">Apellido</label> 
+                        <input type="text" name="last_name" class="control" placeholder="Apellido" 
+                        value="<%= user.last_name  %>" readonly>  
+                        <% if (locals.errors && errors.last_name) { %>
+                            <div class="text-danger">
+                                <%= errors.last_name.msg %> 
+                            </div>                         
+                        <% } %> 
+                    </div>
+                    <div class="control-form">
+                        <label for="username">Nombre de Usuari@</label> 
+                        <input type="text" name="username" class="control" placeholder="Nombre de Usuario" 
+                        value="<%= user.username  %>" readonly>
+                        <% if (locals.errors && errors.username) { %>
+                            <div class="text-danger">
+                                <%= errors.username.msg %> 
+                            </div>                         
+                        <% } %>    
+                    </div>
+                    <div class="control-form">
+                        <label for="email">Correo electronico</label> 
+                        <input type="email" name="email" class="control" placeholder="nombre@correo.com" 
+                        value="<%= user.email  %>" readonly>
+                        <% if (locals.errors && errors.email) { %>
+                            <div class="text-danger">
+                                <%= errors.email.msg %> 
+                            </div>                         
+                        <% } %>    
+                    </div>
+                    <div class="control-form">
+                        <label for="birth_date">Fecha de Nacimiento</label> 
+                        <input type="date" name="birth_date" class="control" placeholder="dd/mm/yyyy" 
+                        value="<%= user.birth_date  %>" readonly>
+                        <% if (locals.errors && errors.birth_date) { %>
+                            <div class="text-danger">
+                                <%= errors.birth_date.msg %> 
+                            </div>                         
+                        <% } %> 
+                    </div>
+
+                    <!-- If user it is not an admin, then do not show the Rol field -->
+                    <% if (locals.isLogged && user.rols_id === 2) { %>
+                    <div class="control-form">
+                        <label for="rol">Rol</label> 
+                        <input type="text" name="rol" class="control" placeholder="rol" 
+                        value="<%= user.rols.rol_name %>" readonly>
+                    </div>
+                    <% } %>
+
+                   </form> 
+                    <div class="botonesEditarProducto">
+                        <form action="/usuarios/edit/<%= user.id %>" method="get" class="create-user">
+                            <button type="submit" class="submit-lgn-mc">Editar </button>
+                        </form>
+                    </div>
+                    <div class="botonesEditarProducto">
+                        <a href="/usuarios/perfil">
+                            <button type="button" class="submit-lgn-mc">    Volver    </button>
+                        </a>
+                    </div>
+                   
+                 
+                    
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Aca va el footer -->
+    <%- include('../partials/footer') %>
+    
+
+</body>
+</html>
